@@ -205,17 +205,6 @@ vector<string> findMatches(Grid g, Dictionary d)
     return found_words;
 }
 
-
-/**
- * @brief Auxillary function for the initial search method that iterates through the dictionary to check
- * every word.
- * 
- * @param g: The grid object containing the wordsearch letters
- * @param d: The dictionary object containing every valid word
- */
-
-
-
 int main()
 {
     Grid g = Grid();
