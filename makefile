@@ -1,7 +1,7 @@
 all: output run
 
 output: main.o grid.o dictionary.o
-	g++ main.o grid.o dictionary.o -o output 
+	g++ -g main.o grid.o dictionary.o -o output 
 
 run:
 	./output
