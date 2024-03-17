@@ -6,7 +6,7 @@ void swap(T& word, T& other)
 {
     T temp = word;
     word = other;
-    other = word;
+    other = temp;
 }
 
 
