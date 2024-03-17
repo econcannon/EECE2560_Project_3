@@ -215,8 +215,9 @@ int main()
     Dictionary d = Dictionary();
     d.dicFile = "dictionary-2";
     d.readFile();
-    d.selectionSort();
-    //d.printWords();
+    //d.selectionSort();
+    d.quickSort(0, d.dict_size-1);
+    d.printWords();
     vector<string> found_words = findMatches(g, d);
     cout << "Found words: ";
     for(int i = 0; i < found_words.size(); i++)

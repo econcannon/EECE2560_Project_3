@@ -126,3 +126,29 @@ void Dictionary::split_by_letter_count()
         cout << "size of words_by_letter_count: " << words_by_letter_count.size() << endl;
     }
 }
+
+int Dictionary::partition(int left, int right)
+{
+    string pivot = words[right];
+    int i = left-1;
+    for (int j = left; j < right; j++)
+    {
+        if (words[j] <= pivot)
+        {
+            i = i+1;
+            swap(words[i], words[j]);
+        }
+    }
+    swap(words[i+1], words[right]);
+    return (i+1);
+}
+
+void Dictionary::quickSort(int left, int right)
+{
+    if (left < right)
+    {
+        int s = partition(left, right);
+        quickSort(left, s-1);
+        quickSort(s+1, right);
+    }
+}
