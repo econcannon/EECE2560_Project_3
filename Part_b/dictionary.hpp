@@ -23,6 +23,7 @@ class Dictionary
         void split_by_letter_count();
         int searchWords(string word, int low, int high);
         void quickSort(int left, int right);
+        void heapSort();
     
     private:
         int partition(int left, int right);

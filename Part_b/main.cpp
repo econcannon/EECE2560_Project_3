@@ -217,6 +217,7 @@ int main()
     d.readFile();
     //d.selectionSort();
     d.quickSort(0, d.dict_size-1);
+    //d.heapSort();
     d.printWords();
     vector<string> found_words = findMatches(g, d);
     cout << "Found words: ";

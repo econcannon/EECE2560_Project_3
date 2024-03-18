@@ -1,4 +1,5 @@
 #include "dictionary.hpp"
+#include "heap.hpp"
 
 
 template <typename T>
@@ -94,6 +95,14 @@ void Dictionary::selectionSort()
         swap(words[min_idx], words[i]);
     }
     cout << endl << "Done sorting..." << endl;
+}
+
+void Dictionary::heapSort()
+{
+    heap<string> dictHeap;
+    dictHeap.initializeMaxHeap(words);
+    dictHeap.buildMaxHeap();
+    words = dictHeap.heapSort();
 }
 
 
