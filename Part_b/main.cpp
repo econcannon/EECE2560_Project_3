@@ -215,7 +215,7 @@ void search(int sortSelector)
     bool fileExists = 0;
     while (!fileExists)
     {
-        cout << "Please enter the name of the gridfile to use:" << endl;
+        cout << "\nPlease enter the name of the gridfile to use:" << endl;
         cin >> searchGrid.gridFile;
         if (filesystem::exists(searchGrid.gridFile))
         {
@@ -261,9 +261,28 @@ void search(int sortSelector)
 
 int main()
 {
-    int sortSelection;
-    cout << "Please enter the number corresponding to the sorting algorithm you'd like to use:" << endl;
-    cin >> sortSelection;
+    int sortSelection = 0;
+
+    bool validSelection;
+    while (!validSelection)
+    {
+        cout << "\n1: Selectionsort\n2: Quicksort\n3: Heapsort" << endl;
+        cout << "Please enter the number corresponding to the sorting algorithm you'd like to use:" << endl;
+        cin >> sortSelection;
+        if (cin.fail())
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n' );
+            cout << "Invalid input, values must be an integer between 1 and 3" << endl; 
+        }
+        else if (sortSelection < 1 || sortSelection > 3)
+        {
+            cout << "Sorry, that's not a valid option! Please enter an integer between 1 and 3" << endl;
+        }
+        else{
+            validSelection = 1;
+        }
+    }
     search(sortSelection);
 
     // Grid g = Grid();

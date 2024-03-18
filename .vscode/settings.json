@@ -62,6 +62,8 @@
     "fstream": "cpp",
     "iostream": "cpp",
     "ostream": "cpp",
-    "functional": "cpp"
+    "functional": "cpp",
+    "istream": "cpp",
+    "limits": "cpp"
   }
 }
