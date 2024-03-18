@@ -1,5 +1,8 @@
+#include <filesystem>
+
 #include "grid.hpp"
 #include "dictionary.hpp"
+
 
 /**
  * @brief Finds every combination of letters between length 5 and the longest word in the dictionary. Checks
@@ -205,25 +208,81 @@ vector<string> findMatches(Grid g, Dictionary d)
     return found_words;
 }
 
-int main()
+void search(int sortSelector)
 {
-    Grid g = Grid();
-    g.gridFile = "input15-2";
-    g.readLetters();
-    g.printLetters();
+    Grid searchGrid;
 
-    Dictionary d = Dictionary();
+    bool fileExists = 0;
+    while (!fileExists)
+    {
+        cout << "Please enter the name of the gridfile to use:" << endl;
+        cin >> searchGrid.gridFile;
+        if (filesystem::exists(searchGrid.gridFile))
+        {
+            fileExists = 1;
+        }
+        else{
+            cout << "Sorry, that file doesn't seem to exist! Please enter the file again." << endl;
+        }
+    }
+    searchGrid.readLetters();
+    searchGrid.printLetters();
+
+    Dictionary d;
     d.dicFile = "dictionary-2";
     d.readFile();
-    //d.selectionSort();
-    d.quickSort(0, d.dict_size-1);
-    //d.heapSort();
-    d.printWords();
-    vector<string> found_words = findMatches(g, d);
-    cout << "Found words: ";
+    if (sortSelector == 1)
+    {
+        cout << endl << "Sorting with selectionsort..." << endl; 
+        d.selectionSort();
+    }
+    else if (sortSelector == 2)
+    {
+        cout << endl << "Sorting with quicksort..." << endl; 
+        d.quickSort(0, d.dict_size-1);
+    }
+    else
+    {
+        cout << endl << "Sorting with heapsort..." << endl; 
+        d.heapSort();
+    }
+
+    cout << "Finished sorting!" << endl;
+
+    vector<string> found_words = findMatches(searchGrid, d);
+
+    cout << "\nFound words: " << endl;
     for(int i = 0; i < found_words.size(); i++)
     {
-        cout << endl << found_words[i];
+        cout << "- " << found_words[i] << endl;
     }
-    return 0;
+
+}
+
+int main()
+{
+    int sortSelection;
+    cout << "Please enter the number corresponding to the sorting algorithm you'd like to use:" << endl;
+    cin >> sortSelection;
+    search(sortSelection);
+
+    // Grid g = Grid();
+    // g.gridFile = "input15-2";
+    // g.readLetters();
+    // g.printLetters();
+
+    // Dictionary d = Dictionary();
+    // d.dicFile = "dictionary-2";
+    // d.readFile();
+    // //d.selectionSort();
+    // d.quickSort(0, d.dict_size-1);
+    // d.heapSort();
+    // d.printWords();
+    // vector<string> found_words = findMatches(g, d);
+    // cout << "Found words: ";
+    // for(int i = 0; i < found_words.size(); i++)
+    // {
+    //     cout << endl << found_words[i];
+    // }
+    // return 0;
 }

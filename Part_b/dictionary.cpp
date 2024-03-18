@@ -83,7 +83,6 @@ int Dictionary::searchWords(string word, int low, int high)
 
 void Dictionary::selectionSort()
 {
-    cout << endl << "sorting..." << endl;
     int min_idx;   
     for(int i = 0; i < words.size() - 1; i++)
     {
@@ -94,7 +93,6 @@ void Dictionary::selectionSort()
         }
         swap(words[min_idx], words[i]);
     }
-    cout << endl << "Done sorting..." << endl;
 }
 
 void Dictionary::heapSort()
